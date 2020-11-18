@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="top">
+	<div class="heading">
+		<h1>facebook</h1>
+		<div class="brand">
+			<img src="media/facebookLogo.png">
+		</div>
+	</div>
+	<div class="content">
+		<p>facebook is a social media site inspired by FaceBook.</p>
+		<hr>
+		{% if not request.user.is_authenticated %}
+			<div>
+				Start by Registering <a href="{% url 'register' %}"><button>Register</button></a>
+			</div>
+			<div>
+				Already have an account? <a href="{% url 'login' %}"><button>Login</button></a>
+			</div>
+		{% else %}
+			<div>
+				Start exploring and have fun <a href="{% url 'display-posts' %}"><button>Posts</button></a>
+			</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
